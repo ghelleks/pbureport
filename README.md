@@ -1,3 +1,2 @@
-The OpenShift `diy` cartridge documentation can be found at:
-
-http://openshift.github.io/documentation/oo_cartridge_guide.html#diy
+# pbureport
+Generate a monthly report from a Trello board

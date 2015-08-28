@@ -30,7 +30,7 @@ $(function() {
                                 if (card.idList === list.id) {
                                     var $cardInfo = $("<li>");
 
-                                    if (card.due && list.name.match(/Events/)) {
+                                    if (card.due && (list.name.match(/Events/) || list.name.match(/Done/))) {
                                       $("<span>")
                                         .text(card.due.substring(0, 10))
                                         .addClass("card-event-date")
