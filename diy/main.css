@@ -1,0 +1,46 @@
+#loggedin {
+    display: none;
+}
+
+#header {
+    padding: 4px;
+    border-bottom: 1px solid #000;
+    background: #eee;
+}
+
+#output {
+    padding: 4px;
+}
+
+body {
+  font-family: "Myriad", "Arial", sans-serif;
+}
+
+.card-status::before {
+  content: " – ";
+}
+
+.red { color: #a30000; }
+.yellow { color: #f0ab00; }
+.green { color: #007a87; }
+
+.card-name { }
+
+.card-event-date { }
+.card-event-date::after {
+  content: " – ";
+}
+
+.card-members::before {
+  content: " – ";
+}
+
+.card-release-date { }
+.card-release-date::before { 
+  content: "Release Date: ";
+}
+
+.card-description {
+  color: #4c4c4c;
+  font-size: 0.8em;
+}
