@@ -24,6 +24,10 @@ body {
 .yellow { color: #f0ab00; }
 .green { color: #007a87; }
 
+.trello-card { 
+  margin-top: 1em;
+}
+
 .card-name { }
 
 .card-event-date { }
@@ -42,5 +46,8 @@ body {
 
 .card-description {
   color: #4c4c4c;
-  font-size: 0.8em;
+  font-size: 0.9em;
+}
+.card-description p {
+  margin-top: 0;
 }

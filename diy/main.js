@@ -28,7 +28,7 @@ $(function() {
 
                             $.each(cards, function (iy, card) {
                                 if (card.idList === list.id) {
-                                    var $cardInfo = $("<li>");
+                                    var $cardInfo = $("<li>").addClass("trello-card");
 
                                     if (card.due && (list.name.match(/Events/) || list.name.match(/Done/))) {
                                       $("<span>")
@@ -66,14 +66,13 @@ $(function() {
                                     }
 
                                     if (card.desc) {
-                                      var $descInfo = $("<ul>");
+                                      $("<br>").appendTo($cardInfo);
 
-                                      $("<li>")
-                                        .text(card.desc)
+                                      $("<span>")
+                                        .html(markdownConverter.makeHtml(card.desc))
                                         .addClass("card-description")
-                                        .appendTo($descInfo);
+                                        .appendTo($cardInfo);
 
-                                      $descInfo.appendTo($cardInfo);
                                     }
 
                                     $cardInfo.appendTo($cards);

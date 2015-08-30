@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Trello Exporter</title>
-    <script>
-        var boardId = "mWVpws2j";
-    </script>
 
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://api.trello.com/1/client.js?key=aa846c4392c2e7cdb3a996f2e7ae028d"></script>
+    <script src="https://cdn.rawgit.com/showdownjs/showdown/1.2.3/dist/showdown.min.js"></script>
+
+    <script>
+        var boardId = "mWVpws2j";
+        var markdownConverter = new showdown.Converter();
+    </script>
+
     <script src="main.js"></script>
     <link rel="stylesheet" href="main.css">
 </head>
