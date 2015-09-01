@@ -17,7 +17,7 @@ $(function() {
 
                     $.each(lists, function(ix, list) {
                         // use this to filter lists, if you're into that.
-                        if(list.name.match(/./)) {
+                        if(! list.name.match(/!/)) {
                             $("<h3>")
                                 .text(list.name)
                                 .appendTo($lists);
