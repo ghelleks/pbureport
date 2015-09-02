@@ -22,20 +22,14 @@ $(function() {
                                 .text(list.name)
                                 .appendTo($lists);
 
-                            var $cards = $("<ul>");
+                            var $cards = $("<div>").addClass("trello-cards");
+                            //var $cards = $("<ul>");
 
                             $cards.appendTo($lists);
 
                             $.each(cards, function (iy, card) {
                                 if (card.idList === list.id) {
-                                    var $cardInfo = $("<li>").addClass("trello-card");
-
-                                    if (card.due && (list.name.match(/Events/) || list.name.match(/Done/))) {
-                                      $("<span>")
-                                        .text(card.due.substring(0, 10))
-                                        .addClass("card-event-date")
-                                        .appendTo($cardInfo);
-                                    }
+                                    var $cardInfo = $("<div>").addClass("trello-card");
 
                                     $("<a>")
                                         .attr({href: card.shortUrl, target: "trello"})
@@ -43,31 +37,59 @@ $(function() {
                                         .addClass("card-name")
                                         .appendTo($cardInfo);
 
-                                    $.each(card.members, function(ix, member) {
-                                        $("<span>")
-                                            .text(member.fullName)
-                                            .addClass("card-members")
-                                            .appendTo($cardInfo);
-                                    });
+                                    var $metadata = new Array();
 
-                                    $.each(card.labels, function(ix, label) {
+                                    if (card.due) {
+                                      $metadata.push(
                                         $("<span>")
-                                            .text(label.color)
-                                            .addClass("card-status "+label.color)
-                                            .appendTo($cardInfo);
-                                    });
-
-                                    if (card.due && list.name.match(/Product/)) {
-                                      $("<br>").appendTo($cardInfo);
-                                      $("<span>")
-                                        .text(card.due.substring(0, 10))
-                                        .addClass("card-release-date")
-                                        .appendTo($cardInfo);
+                                         .text(card.due.substring(0, 10))
+                                         .addClass("card-due")
+                                         .prop('outerHTML')
+                                      );
                                     }
 
-                                    if (card.desc) {
-                                      $("<br>").appendTo($cardInfo);
+                                    var $memberList = $("<span>").addClass("card-members");
+                                    var $memberArray = new Array();
+                                    $.each(card.members, function(ix, member) {
+                                       $memberArray.push(        
+                                         $("<span>")
+                                            .text(member.fullName)
+                                            .addClass("card-member")
+                                            .prop('outerHTML')
+                                      );
+                                    });
+                                    if ($memberArray.length > 0) {
+                                      $metadata.push(
+                                        $memberList.html($memberArray.join(", ")).prop('outerHTML')
+                                      );
+                                    }
 
+                                    var $labelList = $("<span>").addClass("card-labels");
+                                    var $labelArray = new Array();
+                                    $.each(card.labels, function(ix, label) {
+                                       $labelArray.push(        
+                                         $("<span>")
+                                          .text(label.color)
+                                          .attr("title", label.name)
+                                          .addClass("card-label " + label.color)
+                                          .prop('outerHTML')
+                                      );
+                                    });
+                                    if ($labelArray.length > 0) {
+                                      $metadata.push(
+                                        $labelList.html($labelArray.join(", ")).prop('outerHTML')
+                                      );
+                                    }
+
+                                    $('<br>').appendTo($cardInfo)
+                                    $('<span>')
+                                      .addClass('metadata gray')
+                                      .html(" " + $metadata.join(" - "))
+                                      .appendTo($cardInfo)
+                                    ;
+
+                                    if (card.desc) {
+                                      $('<br>').appendTo($cardInfo)
                                       $("<span>")
                                         .html(markdownConverter.makeHtml(card.desc))
                                         .addClass("card-description")

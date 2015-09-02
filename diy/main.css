@@ -16,38 +16,49 @@ body {
   font-family: "Myriad", "Arial", sans-serif;
 }
 
-.card-status::before {
-  content: " – ";
+.metadata {
+  font-size: 0.8em;
 }
 
+.card-labels { }
+
+.gray { color: #808080; }
 .red { color: #a30000; }
 .yellow { color: #f0ab00; }
-.green { color: #007a87; }
+.green { color: #006621; }
+.orange { display: off; }
+.purple { display: off; }
 
 .trello-card { 
-  margin-top: 1em;
+  margin-top: 1em; 
+  margin-left: 3%; 
+  margin-right: 3%; 
 }
 
 .card-name { }
 
 .card-event-date { }
+/*
 .card-event-date::after {
   content: " – ";
 }
+*/
 
+.card-members { }
+
+/*
 .card-members::before {
-  content: " – ";
+  content: " • ";
 }
+*/
 
-.card-release-date { }
-.card-release-date::before { 
-  content: "Release Date: ";
-}
+.card-due { }
 
 .card-description {
   color: #4c4c4c;
-  font-size: 0.9em;
+  font-size: 0.8em;
 }
 .card-description p {
   margin-top: 0;
+  margin-bottom: 0;
 }
