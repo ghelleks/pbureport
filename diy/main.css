@@ -1,3 +1,9 @@
+@media print
+{    
+    #header { display: none !important; }
+    #github { display: none !important; }
+}
+
 #loggedin {
     display: none;
 }
