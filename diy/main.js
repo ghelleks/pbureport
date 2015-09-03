@@ -28,6 +28,8 @@ $(function() {
                             $cards.appendTo($lists);
 
                             $.each(cards, function (iy, card) {
+                              // skip cards with ! in them, for privacy and a civil tone
+                              if(! card.name.match(/!/)) {
                                 if (card.idList === list.id) {
                                     var $cardInfo = $("<div>").addClass("trello-card");
 
@@ -99,6 +101,7 @@ $(function() {
 
                                     $cardInfo.appendTo($cards);
                                 }
+                              }
                             });
                         }
                     });
