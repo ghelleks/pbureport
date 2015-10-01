@@ -17,7 +17,7 @@ $(function() {
 
                     $.each(lists, function(ix, list) {
                         // use this to filter lists, if you're into that.
-                        if(! list.name.match(/!/)) {
+                        if(! list.name.match(/[?!]/)) {
                             $("<h3>")
                                 .text(list.name)
                                 .appendTo($lists);
@@ -29,7 +29,7 @@ $(function() {
 
                             $.each(cards, function (iy, card) {
                               // skip cards with ! in them, for privacy and a civil tone
-                              if(! card.name.match(/!/)) {
+                              if(! card.name.match(/[?!]/)) {
                                 if (card.idList === list.id) {
                                     var $cardInfo = $("<div>").addClass("trello-card");
 
